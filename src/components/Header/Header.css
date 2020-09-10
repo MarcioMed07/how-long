@@ -1,0 +1,21 @@
+.header{
+    width: 100%;
+    background: #222;
+    color: white;
+    display: grid;
+    place-items: center ;
+    padding: 15px 0;
+    height: 100px;
+}
+
+.title{
+    margin-top:0;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.subtitle{
+    margin-top:0;
+    font-size: 1em;
+    text-align: center;
+}

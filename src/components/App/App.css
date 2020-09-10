@@ -1,0 +1,6 @@
+.app {
+	height: 100%;
+	margin: 0;
+	grid-template-rows: auto 1fr auto;
+	display: grid;
+}
