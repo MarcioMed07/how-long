@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { intervalToDuration, format, parseISO } from "date-fns";
+import { intervalToDuration, format, parseISO, isValid } from "date-fns";
 import "./EventCard.css";
 
 function formatTimer(date) {
@@ -33,6 +33,10 @@ function formatTimer(date) {
 function EventCard(props) {
 	function handleSubmit(e) {
 		e.preventDefault();
+		if(!isValid(parseISO(date))){
+			alert("Please input an ISO 8601 valid date")
+			return;
+		}
 		const event = {
 			title: name,
 			date: parseISO(date),
