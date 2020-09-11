@@ -54,3 +54,12 @@
 	color: #1890ff;
 	border: solid 1px #1890ff;
 }
+
+
+.delete-button:focus {
+    outline: none;
+}
+
+.delete-button:active {
+    background-color: #efefef;
+}
