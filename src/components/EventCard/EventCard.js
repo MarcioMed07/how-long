@@ -11,7 +11,6 @@ function formatTimer(date) {
 	const format = [
 		"years",
 		"months",
-		"weeks",
 		"days",
 		"hours",
 		"minutes",
