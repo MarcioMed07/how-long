@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Content.css";
 import EventCard from "../EventCard/EventCard";
 import CardHolder from "../CardHolder/CardHolder";
-import { formatISO, parseISO } from "date-fns";
+import { formatISO, isValid, parseISO } from "date-fns";
 
 let initialEvents = JSON.parse(localStorage.getItem("events") || "[]");
 initialEvents.map((event) => {
@@ -33,23 +33,31 @@ function exportData() {
 
 function importData() {
 	const input = document.getElementById("import-input");
-	// input.click();
-}
-
-function proccessData(event) {
-	const file = event.target.files[0];
-	console.log(file);
-	const fr = new FileReader();
-	fr.onload = (e) => {
-		console.log(e);
-		const result = JSON.parse(e.target.result);
-		console.log(result);
-	};
-
-	fr.readAsText(file);
+	input.click();
 }
 
 function Content(props) {
+	function proccessData(event) {
+		const file = event.target.files[0];
+		const fr = new FileReader();
+		fr.onload = (e) => {
+			const result = JSON.parse(e.target.result);
+			if (Array.isArray(result)) {
+				for (let entry of result) {
+					if (entry.key && entry.date && entry.title) {
+						if (isValid(parseISO(entry.date))) {
+							entry.date = parseISO(entry.date);
+							addEvent(entry);
+						}
+					}
+				}
+			}
+			setCards(buildCards(events));
+		};
+
+		fr.readAsText(file);
+	}
+
 	function buildCards(events) {
 		const cards = [];
 		let i = 0;
