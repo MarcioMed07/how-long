@@ -5,7 +5,7 @@ import CardHolder from "../CardHolder/CardHolder";
 import { formatISO, isValid, parseISO } from "date-fns";
 
 let initialEvents = JSON.parse(localStorage.getItem("events") || "[]");
-initialEvents.map((event) => {
+initialEvents.forEach((event) => {
 	event.date = parseISO(event.date);
 });
 let events = initialEvents;
