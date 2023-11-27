@@ -1,5 +1,7 @@
 .card-holder{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    gap: 2em;
     justify-content: center;
+    grid-template-columns: repeat( auto-fit, minmax(270px, max-content) );
+    padding: 1em 4em;
 }
